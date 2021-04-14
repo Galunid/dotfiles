@@ -20,6 +20,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 default_border pixel 1
 default_floating_border normal
 hide_edge_borders none
+gaps inner 15
+smart_gaps on
 
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
