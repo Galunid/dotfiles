@@ -224,7 +224,7 @@ interval = 3
 format-margin = 2
 format-padding = 2
 format-underline = #ff6600
-format =  <label>
+format = <label>
 label = %percentage:3:3%%
 
 [module/battery]
