@@ -8,12 +8,12 @@ alias dmenu_run="dmenu_run -fn 'Jetbrains Mono-13"
 alias ls='ls --color=auto'
 alias gsts='git status'
 alias gdiff='git diff'
+alias gupd='git checkout master && git pull upstream master'
+
 alias vimrc='vim ~/.config/nvim/init.vim'
 
 alias sl=ls
 alias ll='ls -lah'
-
-# alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias leading_zeros=perl-rename -e 's/\d+/sprintf("%03d",$&)/e\'  *
 alias remove_pipe='find . -iname \*.* | perl-rename -v "s/\|/\-/gi"'
