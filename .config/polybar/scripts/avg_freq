@@ -1,0 +1,5 @@
+#!/bin/bash
+while true; do
+    printf "%0.f\n" $(cat /proc/cpuinfo | grep -i "cpu MHZ" | awk '{ print $4 }' | jq -s add/length);
+    sleep 0.5;
+done;

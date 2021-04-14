@@ -53,7 +53,7 @@ font-3=font\-logos:size=10;2
 font-4=FontAwesome5Brands:size=11;1
 font-5=IPAGothic:size=11;3
 
-modules-right = spotify sink pulseaudio mic-volume battery updates cpu temperature time powermenu
+modules-right = spotify freq sink pulseaudio mic-volume battery updates cpu freq temperature time powermenu
 
 ; i3
 ; modules-left = launcher i3 xwindow
@@ -84,6 +84,15 @@ format-margin = 2
 tail = true
 interval = 30
 click-left = urxvt -e yay -Syu
+
+[module/freq]
+type=custom/script
+exec = bash ~/.config/polybar/scripts/avg_freq
+format =   <label>
+format-margin = 2
+format-underline = #ff6600
+tail = true
+interval = 30
 
 [module/xwindow]
 type = internal/xwindow
