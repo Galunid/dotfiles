@@ -1,0 +1,61 @@
+#!/bin/zsh
+
+alias cp="cp -i"
+alias df='df -h'
+alias mv='mv -i'
+alias dmenu="dmenu -fn 'Jetbrains Mono-13'"
+alias dmenu_run="dmenu_run -fn 'Jetbrains Mono-13"
+alias ls='ls --color=auto'
+alias gsts='git status'
+alias gdiff='git diff'
+alias vimrc='vim ~/.config/nvim/init.vim'
+
+alias sl=ls
+alias ll='ls -lah'
+
+# alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+alias leading_zeros=perl-rename -e 's/\d+/sprintf("%03d",$&)/e\'  *
+alias remove_pipe='find . -iname \*.* | perl-rename -v "s/\|/\-/gi"'
+alias youtube-dl-fast='youtube-dl -f best --external-downloader aria2c --http-chunk-size 1M -o "/home/kris/.my/%(title)s.%(ext)s"'
+alias youtube-dl-fast-720='youtube-dl -f 720p --external-downloader aria2c --http-chunk-size 1M -o "/home/kris/.my/%(title)s.%(ext)s"'
+alias youtube-dl-fast-7200='youtube-dl -f "720p-0" --external-downloader aria2c --http-chunk-size 1M -o "/home/kris/.my/%(title)s.%(ext)s"'
+alias koreader_run='docker run -e DISPLAY=$DISPLAY --net host --volume="$HOME/.Xauthority:/home/ko/.Xauthority:rw" -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/kris/koreader:/home/ko/koreader -it koreader/koappimage:latest bash -c "source ~/.bashrc && pushd koreader && ./kodev run"'
+alias koreader_test_base='docker run -e DISPLAY=$DISPLAY --net host --volume="$HOME/.Xauthority:/home/ko/.Xauthority:rw" -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/kris/koreader:/home/ko/koreader -it koreader/koappimage:latest bash -c "source ~/.bashrc && ln local/bin/luajit local/bin/lua && pushd koreader && ./kodev test base"'
+alias koreader_test_front='docker run -e DISPLAY=$DISPLAY --net host --volume="$HOME/.Xauthority:/home/ko/.Xauthority:rw" -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/kris/koreader:/home/ko/koreader -it koreader/koappimage:latest bash -c "source ~/.bashrc && ln local/bin/luajit local/bin/lua && pushd koreader && ./kodev test front"'
+alias koreader_run_current='docker run -e DISPLAY=$DISPLAY --net host --volume="$HOME/.Xauthority:/home/ko/.Xauthority:rw" -v /tmp/.X11-unix:/tmp/.X11-unix -v "$(pwd):/home/ko/koreader" -it koreader/koappimage:latest bash -c "source ~/.bashrc && pushd koreader && ./kodev run"'
+alias koreader_console='docker run -v "$(pwd):/home/ko/koreader" -it koreader/koappimage:latest bash'
+alias koreader_build_kobo='docker run -v "$(pwd):/home/ko/koreader" -it koreader/kokobo:0.1.2 bash -c "source ~/.bashrc && pushd koreader && ./kodev release kobo"'
+alias koreader_build_android='docker run -v "$(pwd):/home/ko/koreader" -v /home/kris/.gradle:/home/ko/.gradle -it koreader/koandroid:0.4.0 bash -c "source ~/.bashrc && pushd koreader && ./kodev release android"; pushd platform/android/luajit-launcher && rm -rf jni/luajit/luajit-2.0/.git && git reset --hard HEAD && popd && notify-send "Android build finish, please sign" && /opt/android-sdk/build-tools/30.0.3/apksigner sign --ks my.keystore *.apk'
+alias ff='find . \( -path ./koreader -o -path ./.cache -o -path ./.local -o -path ./Calibre\ Library -o -path ./.gradle -o -path ./.my \) -prune -false -o'
+alias music-ld='music-dl'
+alias mdl='music-dl'
+alias jupyter='docker run -p 8888:8888 -v /home/kris:/home/jovyan/work jupyter/scipy-notebook'
+alias clean-branches='git branch --merged | grep -v "^[ *]*master$" >/tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches && rm -rf /tmp/merged-branches'
+
+# as functions
+music-dl(){
+   youtube-dl --extract-audio --audio-format mp3 -o "/home/kris/Music/%(title)s.%(ext)s" $1
+   echo "Setting gain"
+   mp3gain -r ~/Music/*.mp3 > /dev/null
+}
+
+rpi-sync(){
+  rsync -avun --delete -e ssh "$1" "pi@10.6.0.1:/mnt/disk/$2"
+}
+
+rpi-sync-confirm(){
+  rsync -av --delete -e ssh "$1" "pi@10.6.0.1:/mnt/disk/$2"
+}
+
+rpi-sync-safe(){
+  rsync -av -e ssh "$1" "pi@10.6.0.1:/mnt/disk/$2"
+}
+
+koreader_test_one(){
+    docker run -e DISPLAY=$DISPLAY --net host --volume="$HOME/.Xauthority:/home/ko/.Xauthority:rw" -v /tmp/.X11-unix:/tmp/.X11-unix -v /home/kris/koreader:/home/ko/koreader -it koreader/koappimage:latest bash -c "source ~/.bashrc && ln local/bin/luajit local/bin/lua && pushd koreader && ./kodev test front $1"
+}
+
+function config {
+   /usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME $@
+}
