@@ -54,10 +54,10 @@ font-3=Material Icons:size=13;4
 font-4=FontAwesome5Brands:size=11;1
 font-5=IPAGothic:size=11;3
 
-modules-right = pulseaudio mic-volume battery updates mycpu freq temperature gpu_temp time powermenu
+modules-left = i3 updates xwindow
+modules-right = pulseaudio mic-volume battery mycpu freq temperature gpu_temp time powermenu
 tray-position = center
 ;modules-left = i3 sink xwindow
-modules-left = i3 xwindow
 wm-restack = i3
 override-redirect = false
 
@@ -75,7 +75,7 @@ exec-if = [[ $(yay -Qu | wc -l) != 0 ]]
 format =   <label> update(s) available.
 format-margin = 2
 tail = true
-interval = 30
+interval = 600
 click-left = urxvt -e yay -Syu
 
 [module/freq]
