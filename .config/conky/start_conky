@@ -1,4 +1,5 @@
 #!/bin/bash
 
 conky -c ~/.config/conky/config &&
+conky -c ~/.config/conky/weather && 
 exit 0
