@@ -245,6 +245,11 @@ format-underline = #ff6600
 format = <label>
 label = %percentage:3:3%%
 
+
+; this needs entry in /etc/sudoers
+; <USERNAME> ALL=(root) NOPASSWD: <PATH TO SCRIPT>
+; script should have permissions set so that only root can edit it
+; otherwise it poses security risk
 [module/mycpu]
 type = custom/script
 exec = bash ~/.config/polybar/scripts/cpu_usage.sh
