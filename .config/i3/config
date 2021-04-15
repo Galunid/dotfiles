@@ -8,12 +8,9 @@ exec --no-startup-id xfce4-power-manager
 exec --no-startup-id ~/.config/conky/start_conky
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
-exec --no-startup-id volumeicon
 exec --no-startup-id start-pulseaudio-x11
-exec --no-startup-id pa-applet
 exec --no-startup-id flameshot
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-# exec_always --no-startup-id fix_xcursor
 
 # Visuals
 
@@ -84,6 +81,7 @@ bindsym $mod+Ctrl+0 move container to workspace $ws8; workspace $ws10
 bindsym $mod+F2 restart  # restart i3
 
 bindsym $mod+q kill
+bindsym $mod+Shift+q [con_id="__focused__" instance="^(?!dropdown_).*$"] exec --no-startup-id kill -9 `xdotool getwindowfocus getwindowpid`
 bindsym $mod+h focus left                                                       
 bindsym $mod+j focus down                                                       
 bindsym $mod+k focus up                                                       
@@ -117,6 +115,9 @@ bindsym $mod+Shift+w exec --no-startup-id chromium --incognito
 bindsym $mod+m exec pavucontrol
 bindsym $mod+c exec calibre
 bindsym $mod+i exec terminal -e htop
+
+bindsym KP_End workspace 1
+# bindsym KP_End workspace 1
 
 # Window to workspace
 

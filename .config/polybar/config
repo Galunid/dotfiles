@@ -54,19 +54,11 @@ font-3=Material Icons:size=13;4
 font-4=FontAwesome5Brands:size=11;1
 font-5=IPAGothic:size=11;3
 
-modules-right = sink pulseaudio mic-volume battery updates mycpu freq temperature gpu_temp time powermenu
-
-; i3
-; modules-left = launcher i3 xwindow
-; scroll-up = i3wm-wsnext
-; scroll-down = i3wm-wsprev
-; wm-restack = i3
-
-; bspwm
+modules-right = pulseaudio mic-volume battery updates mycpu freq temperature gpu_temp time powermenu
+tray-position = center
+;modules-left = i3 sink xwindow
 modules-left = i3 xwindow
-;scroll-up = bspwm-wsnext
-;scroll-down = bspwm-wsprev
-wm-restack = bspwm
+wm-restack = i3
 override-redirect = false
 
 
