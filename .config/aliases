@@ -33,6 +33,8 @@ alias mdl='music-dl'
 alias jupyter='docker run -p 8888:8888 -v /home/kris:/home/jovyan/work jupyter/scipy-notebook'
 alias clean-branches='git branch --merged | grep -v "^[ *]*master$" >/tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches && rm -rf /tmp/merged-branches'
 
+PI_IP='pi@192.168.0.206'
+
 # as functions
 music-dl(){
    youtube-dl --extract-audio --audio-format mp3 -o "/home/kris/Music/%(title)s.%(ext)s" $1
@@ -41,15 +43,15 @@ music-dl(){
 }
 
 rpi-sync(){
-  rsync -avun --delete -e ssh "$1" "pi@10.6.0.1:/mnt/disk/$2"
+  rsync -avun --delete -e ssh "$1" "$PI_IP:/mnt/disk/$2"
 }
 
 rpi-sync-confirm(){
-  rsync -av --delete -e ssh "$1" "pi@10.6.0.1:/mnt/disk/$2"
+  rsync -av --delete -e ssh "$1" "$PI_IP:/mnt/disk/$2"
 }
 
 rpi-sync-safe(){
-  rsync -av -e ssh "$1" "pi@10.6.0.1:/mnt/disk/$2"
+  rsync -av -e ssh "$1" "$PI_IP:/mnt/disk/$2"
 }
 
 koreader_test_one(){
