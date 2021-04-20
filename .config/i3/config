@@ -105,6 +105,7 @@ bindsym $mod+p move workspace to output left
 # Application bindings
 
 bindsym $mod+F3 exec pcmanfm # File browser
+bindsym Print exec flameshot gui # File browser
 bindsym $mod+d exec --no-startup-id dmenu_recency
 
 bindsym $mod+Return exec terminal
