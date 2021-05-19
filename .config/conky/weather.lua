@@ -67,9 +67,19 @@ end
 if timepassed < 3600 then
     response = data
 else
-    weather = http.request(("%slat=%s&lon=%s&exclude=minutely,hourly&units=%s&APPID=%s"):format(api_url, LAT, LON, cf, apikey))
-    if weather then
-        response = json.decode(weather)
+    -- st = string.format("%slat=%s&lon=%s&exclude=minutely,hourly&units=%s&APPID=%s", api_url, LAT, LON, cf, apikey)
+    -- weather = http.request(st)
+    -- if weather then
+    --    response = json.decode(weather)
+    --    makecache(response)
+    -- else
+    --    response = data
+    --end
+    result = io.popen("curl -s 'https://api.openweathermap.org/data/2.5/onecall?lat=50.0647&lon=19.945&exclude=minutely,hourly&units=metric&APPID=8ced20f29f56dfb09379c3a9a43873b9'"):read("*a")
+    test = io.popen("curl -s 'https://api.openweathermap.org/data/2.5/onecall?lat=50.0647&lon=19.945&exclude=minutely,hourly&units=metric&APPID=8ced20f29f56dfb09379c3a9a43873b9'")
+    
+    if result then
+        response = json.decode(result)
         makecache(response)
     else
         response = data

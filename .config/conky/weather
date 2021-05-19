@@ -41,6 +41,6 @@ conky.config = {
 }
 conky.text = [[
 ${alignc}${font :size=28} ${time %k:%M %p}${font}
-${font Fira Mono:size=14}${execpi 3600 ~/.config/conky/cal.lua}${font}
 ${alignc}${execpi 1800 ~/.config/conky/weather.lua}
+${font Fira Mono:size=14}${execpi 3600 ~/.config/conky/cal.lua}${font}
 ]]
