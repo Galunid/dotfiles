@@ -56,7 +56,7 @@ font-5=IPAGothic:size=11;3
 
 modules-left = i3 updates xwindow
 modules-right = pulseaudio mic-volume battery mycpu freq temperature gpu_temp time powermenu
-tray-position = center
+;tray-position = center
 ;modules-left = i3 sink xwindow
 wm-restack = i3
 override-redirect = false

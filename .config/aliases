@@ -33,6 +33,8 @@ alias mdl='music-dl'
 alias jupyter='docker run -p 8888:8888 -v /home/kris:/home/jovyan/work jupyter/scipy-notebook'
 alias clean-branches='git branch --merged | grep -v "^[ *]*master$" >/tmp/merged-branches && vim /tmp/merged-branches && xargs git branch -d </tmp/merged-branches && rm -rf /tmp/merged-branches'
 
+alias autoexec='vim ~/.steam/steam/steamapps/common/Counter-Strike\ Global\ Offensive/csgo/cfg/autoexec.cfg'
+
 PI_IP='pi@192.168.0.206'
 
 # as functions
