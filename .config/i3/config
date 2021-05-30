@@ -122,6 +122,11 @@ bindsym $mod+m exec pavucontrol
 bindsym $mod+c exec calibre
 bindsym $mod+i exec terminal -e htop
 
+# Media keys
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+
 # bindsym KP_End workspace 1
 # bindsym KP_End workspace 1
 
